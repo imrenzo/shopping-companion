@@ -1,5 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
-const ai = new GoogleGenAI({ apiKey: 'AIzaSyBq5yTV2AjPHIufVgSi0ItVsxU0sJPsAGg' });
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_KEY });
 
 // get AI output objecy with this function. just pass in product Name
 export async function processProduct(productName: string) {
