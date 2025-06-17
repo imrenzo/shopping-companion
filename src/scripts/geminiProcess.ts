@@ -1,20 +1,29 @@
 import { GoogleGenAI } from "@google/genai";
-const ai = new GoogleGenAI({ apiKey: process.env.REACT_APP_GEMINI_KEY });
+const ai = new GoogleGenAI({ apiKey: 'AIzaSyBq5yTV2AjPHIufVgSi0ItVsxU0sJPsAGg' });
 
-// get AI output with this function. just pass in product Name
-async function processProduct(productName: string) {
+// get AI output objecy with this function. just pass in product Name
+export async function processProduct(productName: string) {
     const prompt = generatePrompt(productName)
     const output = await sendAI(prompt)
-    return output
+    console.log(output)
+    const match = (output as string).match(/```json\s*([\s\S]*?)\s*```/);
+    if (!match) {
+        throw new Error("No valid JSON block found in output");
+    }
+    const jsonString = match[1];
+    const object: outputProps = await JSON.parse(jsonString);
+    // access object fields with outputProps interface
+    return object
 }
 
 function generatePrompt(productName: string) {
     const prompt = `Give me an environmental score for this product ${productName} from 0-100 and suggest any alternatives.
-    Output in JSON without markdown using the given template. Template:
+    Output in JSON using template:
     {
     productName: "Tide Power Pods Laundry Detergent Pacs with Febreze Sport",
     score: 0,
     suggestedAlternative: "Alternative product name"
+    summaryOfEnvironmentalImpact: ""
     }
     `
     return prompt
@@ -26,6 +35,5 @@ async function sendAI(input: string) {
         contents: input,
     });
     const output = response.text
-    console.log(output);
     return output
 }
