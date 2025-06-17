@@ -16,6 +16,13 @@ export default mergeConfig(
             service_worker: 'src/pages/background/index.ts',
             type: 'module'
           },
+          content_scripts: [
+          {
+            matches: ['<all_urls>'],
+            js: ['src/pages/content/index.tsx'],
+            css: ['contentStyle.css']
+          }
+        ]
         } as ManifestV3Export,
         browser: 'chrome',
         contentScripts: {

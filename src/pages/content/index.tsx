@@ -1,5 +1,8 @@
 import { createRoot } from "react-dom/client";
 import "./style.css";
+import { processProduct } from "@src/scripts/geminiProcess";
+
+let lastProductData: any = null;
 
 //func to wait for page to load before scraping, mainly for shopee cuz it doesn't work without waiting
 function waitForSelector(
@@ -94,7 +97,11 @@ try {
 
 async function runScraper() {
   const product = await scrapeProductData();
-  console.log(product);
+  lastProductData = { ...product };
+  chrome.runtime.sendMessage({
+    type: "PRODUCT_DATA",
+    payload: { ...product }
+  });
 }
 
 let lastUrl = window.location.href;
@@ -109,3 +116,13 @@ setInterval(() => {
 
 //scrapes data on page load
 runScraper();
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type === "GET_PRODUCT_DATA") {
+    scrapeProductData().then((product) => {
+      sendResponse(product);
+    });
+    return true; // Keep channel open for async response
+  }
+});
+
