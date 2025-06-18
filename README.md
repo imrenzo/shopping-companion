@@ -1,7 +1,7 @@
 # Sustainability Shopping Companion for LifeHack 2025
 
 ## Intro
-Our team has made a browser extension and mobile app that helps users make eco-friendly shopping decisions by providing real-time sustainability scores, clear visual impact indicators, and alternative product recommendations as they shop online. The platform ensures reliable data through trusted third-party certifications, verified databases, and transparent sourcing methods. To encourage ongoing engagement, it includes personalized tips, gamified achievements, and seamless integration into popular e-commerce platforms. The user experience balances depth and simplicity through intuitive design and digestible insights tailored for everyday use.
+Our team has made a chrome browser extension and mobile app that helps users make eco-friendly shopping decisions by providing real-time sustainability scores, clear visual impact indicators, and alternative product recommendations as they shop online. The platform ensures reliable data through trusted third-party certifications, verified databases, and transparent sourcing methods. To encourage ongoing engagement, it includes personalized tips, gamified achievements, and seamless integration into popular e-commerce platforms. The user experience balances depth and simplicity through intuitive design and digestible insights tailored for everyday use.
 
 ## Getting Started
 
@@ -13,6 +13,7 @@ For Chrome
 3. Tick - Developer mode
 4. Find - Load unpacked extension
 5. Select - `dist_chrome` folder in this project
+6. Follow [Testing Instructions](#testing-instructions)
 
 ### Method 2 (if method 1 fails)
 #### Delete local cloned repository
@@ -36,3 +37,13 @@ For Chrome
 3. Tick - Developer mode
 4. Find - Load unpacked extension
 5. Select - `dist_chrome` folder in this project (after dev or build)
+6. Follow [Testing Instructions](#testing-instructions)
+
+## Testing instrucions
+1. Go to Amazon/Shopee/Lazada and select a product
+2. Open extension
+
+If loading takes too long:
+
+3. Refresh browser
+4. Close and Reopen extension
