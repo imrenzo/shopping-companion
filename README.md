@@ -15,6 +15,8 @@ For Chrome
 5. Select - `dist_chrome` folder in this project
 
 ### Method 2 (if method 1 fails)
+#### Delete local cloned repository
+1. Delete local cloned repository.
 
 #### Get API Key
 1. Go to https://aistudio.google.com/app/apikey and get Gemini API Key
