@@ -18,7 +18,7 @@ For Chrome
 
 #### Get API Key
 1. Go to https://aistudio.google.com/app/apikey and get Gemini API Key
-2. In project folder, under same directory as `package.json`, create a .env file containing the key:
+2. In project folder, under same directory as `package.json`, create a `.env` file containing the key:
 
 VITE_GEMINI_KEY=your_api_key_here
 
