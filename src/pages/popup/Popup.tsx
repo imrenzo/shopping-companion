@@ -51,6 +51,7 @@ interface outputProps {
   productName: string;
   score: number;
   suggestedAlternative: string;
+  // summaryOfEnvironmentalImpact: string;
 }
 
 export default function Popup() {
