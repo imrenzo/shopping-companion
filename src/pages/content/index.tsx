@@ -89,11 +89,12 @@ let lastUrl = window.location.href;
 
 //repeatedly checks every second if user navigated to another listing and then scraping if so
 setInterval(() => {
+  //scraper is called if url is new
   if (window.location.href !== lastUrl) {
     lastUrl = window.location.href;
     runScraper();
   }
-}, 1000); // Check every second (adjust as needed)
+}, 1000); //check every second (adjust as needed)
 
 //scrapes data on page load
 runScraper();
@@ -103,7 +104,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     scrapeProductData().then((product) => {
       sendResponse(product);
     });
-    return true; // Keep channel open for async response
+    return true; //keep channel open for async response
   }
 });
 
